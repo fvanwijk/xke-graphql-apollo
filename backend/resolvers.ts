@@ -3,16 +3,18 @@ const authors = [
   { id: 2, firstName: "Michael", lastName: "Crichton" },
 ];
 
+const findAuthor = (id: number) => authors.find((author) => author.id === id);
+
 const books = [
   {
     id: 1,
     title: "Harry Potter and the Sorcerer's stone",
-    author: authors[0],
+    authorId: 1,
   },
   {
     id: 2,
     title: "Jurassic Park",
-    author: authors[1],
+    authorId: 2,
   },
 ];
 
@@ -20,6 +22,9 @@ export const resolvers = {
   Query: {
     books: () => books,
     book: (_: unknown, { id }: { id: number }) => books.find((book) => book.id === id),
-    author: (_: unknown, { id }: { id: number }) => authors.find((author) => author.id === id),
+    author: (_: unknown, { id }: { id: number }) => findAuthor(id),
+  },
+  Book: {
+    author: ({ authorId }: { authorId: number }) => findAuthor(authorId),
   },
 };
