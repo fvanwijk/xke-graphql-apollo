@@ -1,0 +1,14 @@
+schema: ../backend/schema.gql
+documents: 'src/**/*.graphql'
+generates:
+  src/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true
+watch: true
+hooks:
+  afterOneFileWrite:
+    - npx prettier --write
