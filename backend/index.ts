@@ -1,32 +1,7 @@
-import { ApolloServer, gql } from "apollo-server";
-
-// Some fake data
-const books = [
-  {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: "J.K. Rowling",
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton",
-  },
-];
-
-// The GraphQL schema in string form
-const typeDefs = gql`
-  type Query {
-    books: [Book]
-  }
-  type Book {
-    title: String
-    author: String
-  }
-`;
-
-// The resolvers
-const resolvers = {
-  Query: { books: () => books },
-};
+import "graphql-import-node";
+import { ApolloServer } from "apollo-server";
+import typeDefs from "./schema.gql";
+import { resolvers } from "./resolvers";
 
 const server = new ApolloServer({
   typeDefs,
