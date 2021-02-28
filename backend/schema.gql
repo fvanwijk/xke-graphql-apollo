@@ -4,5 +4,10 @@ type Query {
 
 type Book {
   title: String
-  author: String
+  author: Author
+}
+
+type Author {
+  firstName: String
+  lastName: String
 }
