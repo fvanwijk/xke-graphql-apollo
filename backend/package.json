@@ -1,0 +1,19 @@
+{
+  "name": "xke-graphql-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --watch '**/*.*' -e ts,gql --exec 'ts-node' --files -r ./index.ts"
+  },
+  "author": "Frank van Wijk",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "2.21.0",
+    "graphql": "15.5.0"
+  },
+  "devDependencies": {
+    "ts-node": "9.1.1",
+    "typescript": "4.2.2"
+  }
+}
