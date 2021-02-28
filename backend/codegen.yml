@@ -1,0 +1,11 @@
+schema: schema.gql
+generates:
+  types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-resolvers
+watch: true
+hooks:
+  afterOneFileWrite:
+    - npx prettier --write
