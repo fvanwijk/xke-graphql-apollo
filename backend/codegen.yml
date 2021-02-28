@@ -5,6 +5,10 @@ generates:
       - typescript
       - typescript-operations
       - typescript-resolvers
+    config:
+      maybeValue: T | undefined
+      mappers:
+        Book: ./models#BookModel
 watch: true
 hooks:
   afterOneFileWrite:

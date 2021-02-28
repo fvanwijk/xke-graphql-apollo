@@ -1,11 +1,14 @@
-const authors = [
+import { BookModel } from "./models";
+import { Author, Resolvers } from "./types";
+
+const authors: Author[] = [
   { id: 1, firstName: "Joanne", lastName: "Rowling" },
   { id: 2, firstName: "Michael", lastName: "Crichton" },
 ];
 
-const findAuthor = (id: number) => authors.find((author) => author.id === id);
+const findAuthor = (id?: number) => authors.find((author) => author.id === id);
 
-const books = [
+const books: BookModel[] = [
   {
     id: 1,
     title: "Harry Potter and the Sorcerer's stone",
@@ -18,13 +21,13 @@ const books = [
   },
 ];
 
-export const resolvers = {
+export const resolvers: Resolvers = {
   Query: {
     books: () => books,
-    book: (_: unknown, { id }: { id: number }) => books.find((book) => book.id === id),
-    author: (_: unknown, { id }: { id: number }) => findAuthor(id),
+    book: (_, { id }) => books.find((book) => book.id === id),
+    author: (_, { id }) => findAuthor(id),
   },
   Book: {
-    author: ({ authorId }: { authorId: number }) => findAuthor(authorId),
+    author: (book) => findAuthor(book.authorId),
   },
 };
