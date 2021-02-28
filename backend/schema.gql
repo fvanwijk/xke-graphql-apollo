@@ -1,6 +1,7 @@
 type Query {
   books: [Book]
   book(id: Int!): Book
+  author(id: Int!): Author
 }
 
 type Book {
@@ -10,6 +11,7 @@ type Book {
 }
 
 type Author {
+  id: Int
   firstName: String
   lastName: String
 }

@@ -1,6 +1,6 @@
 const authors = [
-  { firstName: "Joanne", lastName: "Rowling" },
-  { firstName: "Michael", lastName: "Crichton" },
+  { id: 1, firstName: "Joanne", lastName: "Rowling" },
+  { id: 2, firstName: "Michael", lastName: "Crichton" },
 ];
 
 const books = [
@@ -20,5 +20,6 @@ export const resolvers = {
   Query: {
     books: () => books,
     book: (_: unknown, { id }: { id: number }) => books.find((book) => book.id === id),
+    author: (_: unknown, { id }: { id: number }) => authors.find((author) => author.id === id),
   },
 };
