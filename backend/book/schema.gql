@@ -1,10 +1,10 @@
-type Query {
+extend type Query {
   books: [Book!]!
   book(id: Int!): Book
   author(id: Int!): Author
 }
 
-type Book {
+type Book @key(fields: "id") {
   id: Int!
   title: String!
   author: Author
@@ -12,6 +12,6 @@ type Book {
 
 type Author {
   id: Int!
-  firstName: String
-  lastName: String
+  firstName: String!
+  lastName: String!
 }

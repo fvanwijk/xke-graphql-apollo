@@ -1,10 +1,10 @@
 export interface BookModel {
   id: number;
-  title: string;
-  authorId: number;
+  ratings?: RatingModel[];
 }
 
 export interface RatingModel {
+  book: number;
   id: number;
   rating: number;
   user: number;

@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run generate-types' 'npm run dev:rating' 'npm run dev:book'",
-    "dev:rating": "npx nodemon --watch 'rating/**/*.*' -e ts,gql --exec 'ts-node' --files -r ./rating/server.ts",
-    "dev:book": "npx nodemon --watch 'book/**/*.*' -e ts,gql --exec 'ts-node' --files -r ./book/server.ts",
-    "generate-types": "graphql-codegen"
+    "start": "concurrently 'npm run generate-types:*' 'npm run dev:rating' 'npm run dev:book' 'npm run dev:gateway'",
+    "dev:gateway": "wait-on tcp:4001 tcp:4001 && nodemon --watch 'gateway/**/*.*' -e ts,gql --exec 'ts-node' --files -r ./gateway/server.ts",
+    "dev:rating": "nodemon --watch 'rating/**/*.*' -e ts,gql --exec 'ts-node' --files -r ./rating/server.ts",
+    "dev:book": "nodemon --watch 'book/**/*.*' -e ts,gql --exec 'ts-node' --files -r ./book/server.ts",
+    "generate-types:book": "graphql-codegen --config=book/codegen.yml",
+    "generate-types:rating": "graphql-codegen --config=rating/codegen.yml"
   },
   "author": "Frank van Wijk",
   "license": "ISC",
   "dependencies": {
+    "@apollo/federation": "0.21.2",
+    "@apollo/gateway": "0.23.2",
     "apollo-server": "2.21.0",
     "graphql": "15.5.0",
     "graphql-import-node": "0.0.4"
@@ -22,7 +26,9 @@
     "@graphql-codegen/typescript-operations": "1.17.14",
     "@graphql-codegen/typescript-resolvers": "1.18.2",
     "concurrently": "6.0.0",
+    "nodemon": "2.0.7",
     "ts-node": "9.1.1",
-    "typescript": "4.2.2"
+    "typescript": "4.2.2",
+    "wait-on": "5.2.1"
   }
 }

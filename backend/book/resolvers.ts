@@ -1,5 +1,5 @@
-import { BookModel } from "../models";
-import { Author, Resolvers } from "../types";
+import { BookModel } from "./models";
+import { Author, Resolvers } from "./types";
 
 const authors: Author[] = [
   { id: 1, firstName: "Joanne", lastName: "Rowling" },
@@ -17,7 +17,7 @@ const books: BookModel[] = [
   {
     id: 2,
     title: "Jurassic Park",
-    authorId: 2,
+    authorId: 3, // Does not exist
   },
 ];
 
@@ -28,6 +28,7 @@ export const resolvers: Resolvers = {
     author: (_, { id }) => findAuthor(id),
   },
   Book: {
+    __resolveReference: ({ id }) => books.find((book) => book.id === id),
     author: (book) => findAuthor(book.authorId),
   },
 };

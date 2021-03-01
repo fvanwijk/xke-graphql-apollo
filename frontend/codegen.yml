@@ -1,5 +1,7 @@
-schema: ../backend/schema.gql
-documents: 'src/**/*.graphql'
+schema:
+  - ../backend/book/schema.gql
+  - ../backend/rating/schema.gql
+documents: "src/**/*.graphql"
 generates:
   src/types.ts:
     plugins:

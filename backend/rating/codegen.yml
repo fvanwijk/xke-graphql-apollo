@@ -1,0 +1,17 @@
+schema: rating/schema.gql
+generates:
+  rating/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-resolvers
+    config:
+      maybeValue: T | undefined
+      federation: true
+      mappers:
+        Book: ./models#BookModel
+        Rating: ./models#RatingModel
+watch: true
+hooks:
+  afterOneFileWrite:
+    - npx prettier --write

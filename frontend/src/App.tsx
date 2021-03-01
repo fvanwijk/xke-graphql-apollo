@@ -15,13 +15,13 @@ function App() {
       <main>
         <div className="container">
           <h2>My books</h2>
-          {loading && "Loading books&hellip;"}
+          {loading && "Loading books…"}
 
           <ul>
             {data?.books.map((book) => {
               return (
                 <li>
-                  {book.author.firstName} {book.author.lastName} - {book.title}
+                  {book.author ? `${book.author?.firstName} ${book.author?.lastName}` : "Author unknown"} - {book.title}
                 </li>
               );
             })}

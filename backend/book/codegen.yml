@@ -1,17 +1,15 @@
-schema:
-  - book/schema.gql
-  - rating/schema.gql
+schema: book/schema.gql
 generates:
-  types.ts:
+  book/types.ts:
     plugins:
       - typescript
       - typescript-operations
       - typescript-resolvers
     config:
       maybeValue: T | undefined
+      federation: true
       mappers:
         Book: ./models#BookModel
-        Rating: ./models#RatingModel
 watch: true
 hooks:
   afterOneFileWrite:
