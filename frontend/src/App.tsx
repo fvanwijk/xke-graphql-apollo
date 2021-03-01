@@ -22,6 +22,8 @@ function App() {
               return (
                 <li>
                   {book.author ? `${book.author?.firstName} ${book.author?.lastName}` : "Author unknown"} - {book.title}
+                  <br />
+                  Ratings: {book.ratings.map((r) => `[${r.user?.name} ${r.rating}]`).join(" ")}
                 </li>
               );
             })}

@@ -9,9 +9,9 @@ type User {
 
 type Rating {
   id: Int!
-  rating: Int
+  rating: Int!
   user: User
-  book: Book
+  book: Book!
 }
 
 extend type Book @key(fields: "id") {
