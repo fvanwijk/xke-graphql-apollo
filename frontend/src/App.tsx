@@ -4,7 +4,6 @@ import { useGetBooksQuery } from "./types";
 
 function App() {
   const { data, error, loading } = useGetBooksQuery();
-  const books = data?.books;
 
   return (
     <div>
@@ -17,17 +16,17 @@ function App() {
         <div className="container">
           <h2>My books</h2>
           {loading && "Loading books&hellip;"}
-          {books && (
-            <ul>
-              {books.map((book) => {
-                return (
-                  <li>
-                    {book.author?.firstName} {book.author?.lastName} - {book.title}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
+
+          <ul>
+            {data?.books.map((book) => {
+              return (
+                <li>
+                  {book.author.firstName} {book.author.lastName} - {book.title}
+                </li>
+              );
+            })}
+          </ul>
+
           {error && "Error loading books"}
         </div>
       </main>
