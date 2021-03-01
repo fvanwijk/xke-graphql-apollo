@@ -1,4 +1,6 @@
-schema: schema.gql
+schema:
+  - book/schema.gql
+  - rating/schema.gql
 generates:
   types.ts:
     plugins:
@@ -9,6 +11,7 @@ generates:
       maybeValue: T | undefined
       mappers:
         Book: ./models#BookModel
+        Rating: ./models#RatingModel
 watch: true
 hooks:
   afterOneFileWrite:

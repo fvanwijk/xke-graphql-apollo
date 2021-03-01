@@ -3,3 +3,9 @@ export interface BookModel {
   title: string;
   authorId: number;
 }
+
+export interface RatingModel {
+  id: number;
+  rating: number;
+  user: number;
+}

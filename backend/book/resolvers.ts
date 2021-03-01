@@ -1,5 +1,5 @@
-import { BookModel } from "./models";
-import { Author, Resolvers } from "./types";
+import { BookModel } from "../models";
+import { Author, Resolvers } from "../types";
 
 const authors: Author[] = [
   { id: 1, firstName: "Joanne", lastName: "Rowling" },

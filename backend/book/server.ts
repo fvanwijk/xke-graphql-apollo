@@ -8,6 +8,6 @@ const server = new ApolloServer({
   resolvers,
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+server.listen(4001).then(({ url }) => {
+  console.log(`🚀 Book service ready at ${url}`);
 });

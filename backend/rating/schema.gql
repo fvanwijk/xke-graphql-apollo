@@ -1,0 +1,14 @@
+type Query {
+  ratings(id: Int): [Rating!]!
+}
+
+type User {
+  id: Int
+  name: String
+}
+
+type Rating {
+  id: Int
+  rating: Int
+  user: User
+}
